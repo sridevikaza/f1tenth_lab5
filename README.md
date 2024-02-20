@@ -45,8 +45,8 @@ To visualize the list of waypoints you have, and to visualize the current waypoi
 - **Deliverable 3**: Submit a link to a video on YouTube showing the real car following waypoints in or near AI makerspace. Show a screen recording of rviz. 
 
 ## VIII: Grading Rubric
-- Compilation: **10** Points
-- Running slam_toolbox and producing a map: **30** Points
-- Running particle_filter: **20** Points
-- Implementing pure pursuit: **30** Points
+- Compilation: **5** Points
+- Running slam_toolbox and producing a map: **10** Points
+- Running particle_filter: **10** Points
+- Implementing pure pursuit: **10** Points
 - Video: **10** Points
