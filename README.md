@@ -41,7 +41,7 @@ To visualize the list of waypoints you have, and to visualize the current waypoi
 ## VII. Deliverables
 
 - **Deliverable 1**: Submit the map files ai_makerspace.pgm and ai_makerspace.yaml) that you've made using `slam_toolbox`.
-- **Deliverable 2**: Commit your pure pursuit package to GitHub. Your commited code should run smoothly in simulation.
+- **Deliverable 2**: Submit your code on Canvas. Your submitted code should run smoothly in simulation.
 - **Deliverable 3**: Submit a link to a video on YouTube showing the real car following waypoints in or near AI makerspace. Show a screen recording of rviz. 
 
 ## VIII: Grading Rubric
