@@ -18,30 +18,59 @@ using namespace std;
 
 class PurePursuit : public rclcpp::Node
 {
-    // Implement PurePursuit
-    // This is just a template, you are free to implement your own node!
-
-private:
 
 public:
     PurePursuit() : Node("pure_pursuit_node")
     {
-        // TODO: create ROS subscribers and publishers
+        // odom sub
+
+        // waypoints viz pub
+        loadWaypoints(x_points, y_points);
+
+        // drive pub
+        drive_publisher = this->create_publisher<ackermann_msgs::msg::AckermannDriveStamped>(drive_topic, 10);
     }
 
-    void pose_callback(const geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg)
+private:
+    // variables
+    vector<float> x_points;
+    vector<float> y_points;
+
+    /// ROS subscribers and publishers
+    // odom
+    // viz
+    rclcpp::Publisher<ackermann_msgs::msg::AckermannDriveStamped>::SharedPtr drive_publisher;
+
+    void poseCallback(const geometry_msgs::msg::PoseStamped::ConstPtr &pose_msg)
     {
         // TODO: find the current waypoint to track using methods mentioned in lecture
-
-        // TODO: transform goal point to vehicle frame of reference
+        auto goal = getNextWaypoint();
 
         // TODO: calculate curvature/steering angle
 
         // TODO: publish drive message, don't forget to limit the steering angle.
     }
 
+    void loadWaypoints(vector<float>& x_points, vector<float>& y_points)
+    {
+        // load waypoints csv 
+        // x vector
+        // y vector
+        // publish markers
+    }
+
+    pair<float> getNextWaypoint()
+    {
+        // get current location
+        // find closest waypoint (l2 norm)
+        // iterate forward until waypoint past the L2 norm
+        // set as new goal point
+    }
+
     ~PurePursuit() {}
 };
+
+
 int main(int argc, char **argv)
 {
     rclcpp::init(argc, argv);
