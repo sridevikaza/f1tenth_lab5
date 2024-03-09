@@ -16,7 +16,8 @@ path_to_directory = '/sim_ws/src/f1tenth_lab5_sub/waypoints'
 # Ensure the directory exists
 os.makedirs(path_to_directory, exist_ok=True)
 
-file_path = os.path.join(path_to_directory, strftime('wp-%Y-%m-%d-%H-%M-%S', gmtime()) + '.csv')
+file_path = os.path.join(path_to_directory, 'waypoints.csv')
+# file_path = os.path.join(path_to_directory, strftime('wp-%Y-%m-%d-%H-%M-%S', gmtime()) + '.csv')
 file = open(file_path, 'w')
 
 class WaypointLogger(Node):
