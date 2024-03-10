@@ -23,7 +23,9 @@ foreach(PACKAGE
   std_msgs
   visualization_msgs
   Eigen3
-  tf2_ros)
+  tf2_ros
+  orocos_kdl
+  )
 
   find_package(${PACKAGE} REQUIRED)
 
@@ -39,7 +41,7 @@ include_directories(
 add_executable(pure_pursuit_node src/pure_pursuit_node.cpp)
 
 ament_target_dependencies(pure_pursuit_node 
-  rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros
+  rclcpp geometry_msgs ackermann_msgs nav_msgs sensor_msgs std_msgs visualization_msgs tf2_ros orocos_kdl
 )
 
 # Install Cpp executables
