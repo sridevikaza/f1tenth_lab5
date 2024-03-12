@@ -44,9 +44,6 @@ public:
         // timer to publish markers
         viz_timer = this->create_wall_timer(100ms, std::bind(&PurePursuit::publishMarkers, this));
 
-        // tf_buffer = std::make_shared<tf2_ros::Buffer>(this->get_clock());
-        // tf_listener(*tf_buffer);
-
     }
 
     ~PurePursuit() {}
@@ -101,14 +98,8 @@ private:
         // calculate curvature/steering angle
         float gamma = 2 * base_point.point.y / pow(L,2);
         float steering_angle = steering_gain * gamma;
-        // float lookahead = sqrt(pow(base_point[goal_idx]-position.x, 2) + pow(base_point[goal_idx]-position.y, 2));
-        // float gamma = 2 * (y_points[goal_idx]-position.y) / pow(lookahead,2);
-        // float steering_angle = steering_gain * gamma;
-        // RCLCPP_INFO(this->get_logger(), "current y: %f", position.y);
-        // RCLCPP_INFO(this->get_logger(), "goal y: %f", y_points[goal_idx]);
-        // RCLCPP_INFO(this->get_logger(), "curvature: %f", gamma);
-        RCLCPP_INFO(this->get_logger(), "steering angle: %f", steering_angle);
         steering_angle = max(min_steer, min(steering_angle, max_steer)); // clip
+        RCLCPP_INFO(this->get_logger(), "steering angle: %f", steering_angle);
 
         // publish drive message
         auto drive_msg = ackermann_msgs::msg::AckermannDriveStamped();
@@ -147,9 +138,6 @@ private:
                 found_goal = true;
             }
         }
-        // RCLCPP_INFO(this->get_logger(), "goal_idx: %i", goal_idx);
-        // RCLCPP_INFO(this->get_logger(), "closest_idx: %i", closest_idx);
-        // RCLCPP_INFO(this->get_logger(), "num_waypoints: %i", num_waypoints);
 
         // make goal marker
         goal_marker.header.frame_id = "map";
@@ -167,13 +155,12 @@ private:
         goal_marker.color.r = 1.0;
         goal_marker.color.g = 0.0;
         goal_marker.color.b = 0.0;
-        // goal_marker.lifetime = rclcpp::Duration::from_seconds(1);
     }
 
     // load pre-recorded waypoints from csv
     void loadWaypoints(vector<float>& x_points, vector<float>& y_points)
     {    
-        ifstream csv_file("/sim_ws/src/f1tenth_lab5_sub/waypoints/waypoints.csv");
+        ifstream csv_file("/sim_ws/src/f1tenth_lab5_sub/waypoints/waypoints2.csv");
         string line;
         size_t id = 0;
         int line_count = 0;
