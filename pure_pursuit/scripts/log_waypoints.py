@@ -27,23 +27,6 @@ class WaypointLogger(Node):
         self.subscription
 
     def save_waypoint(self, data):
-        # quaternion = np.array([data.pose.pose.orientation.x,
-        #                        data.pose.pose.orientation.y,
-        #                        data.pose.pose.orientation.z,
-        #                        data.pose.pose.orientation.w])
-
-        # euler = tf_transformations.euler_from_quaternion(quaternion)
-        # speed = LA.norm(np.array([data.twist.twist.linear.x,
-        #                           data.twist.twist.linear.y,
-        #                           data.twist.twist.linear.z]), 2)
-
-        # if data.twist.twist.linear.x > 0.0:
-        #     self.get_logger().info(str(data.twist.twist.linear.x))
-
-        # file.write('%f, %f, %f, %f\n' % (data.pose.pose.position.x,
-                                        #  data.pose.pose.position.y))
-                                        #  euler[2],
-                                        #  speed))
 
         file.write('%f, %f\n' % (data.pose.pose.position.x,
                                          data.pose.pose.position.y))
